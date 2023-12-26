@@ -1,9 +1,11 @@
 <template>
-  <div class="hello">
+  <div class="app-header">
     <!-- <img src="../assets/2.png" alt="boe"> -->
     <!-- <pdf src="/1.pdf"></pdf> -->
-    <vue-pdf-embed ref="pdfRef" :source="pdfSource" :page="page" @password-requested="handlePasswordRequest"
+    <div class="app-content">
+      <vue-pdf-embed ref="pdfRef" :source="pdfSource" :page="page" @password-requested="handlePasswordRequest"
       @rendered="handleDocumentRender" />
+    </div>
   </div>
 </template>
 
@@ -22,15 +24,10 @@ export default {
       isLoading: true,
       page: null,
       pageCount: 1,
-      pdfSource: 'Portfolio_FienCoolman_updated.pdf',
+      pdfSource: 'Portfolio_FienCoolman_updated_without_p.pdf',
       showAllPages: true,
     }
   },
-  // watch: {
-  //   showAllPages() {
-  //     this.page = this.showAllPages ? null : 1
-  //   },
-  // },
   methods: {
     handleDocumentRender() {
       this.isLoading = false
@@ -47,20 +44,28 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.hello{
-  width: 100%;
-}
-.app-header {
-  padding: 0px;
-  box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1);
-  background-color: #555;
-  color: #ddd;
-}
-
+<style >
 body {
   margin: 0;
   padding: 0;
-  background-color: #ccc;
+  background-color: rgba(235, 235, 235, 0.986);
 }
+
+.vue-pdf-embed {
+  margin: auto;
+
+  & > div {
+    margin-bottom: 15px;
+  }
+}
+
+
+.app-content {
+  padding: 15px 15px;
+}
+
+.right {
+  float: right;
+}
+
 </style>
